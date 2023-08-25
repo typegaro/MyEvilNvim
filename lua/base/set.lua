@@ -24,7 +24,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.clipboard="unnamed"
-
+vim.opt.clipboard="unnamedplus"
+--vim.opt.autochdir = true
 vim.opt.spelllang = "it_it,en_us"
-vim.opt.textwidth=60
+--vim.opt.textwidth=60

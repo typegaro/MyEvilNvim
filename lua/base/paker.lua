@@ -8,12 +8,9 @@ return require('packer').startup(function(use)
   	config= function() vim.cmd('colorscheme onedark') end})
   use('nvim-treesitter/nvim-treesitter', {run= ':TSUpdate'})
   use("nvim-lualine/lualine.nvim")
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-    'nvim-tree/nvim-web-devicons', -- optional
-    },
-  }   
+  use("theprimeagen/harpoon")
+  use("mbbill/undotree")
+  use("tpope/vim-fugitive")
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v1.x',
@@ -39,6 +36,5 @@ return require('packer').startup(function(use)
 
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } vim.g.mkdp_auto_close = 0 vim.g.mkdp_markdown_css = '/Users/rp/markdown.css' end, ft = { "markdown" }, })
   use 'nvim-tree/nvim-web-devicons'
-  use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 end)
 

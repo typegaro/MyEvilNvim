@@ -1,5 +1,5 @@
 vim.opt.nu = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true 
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -28,3 +28,4 @@ vim.opt.clipboard="unnamedplus"
 --vim.opt.autochdir = true
 vim.opt.spelllang = "it_it,en_us"
 --vim.opt.textwidth=60
+vim.o.termguicolors = true

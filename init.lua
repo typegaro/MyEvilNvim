@@ -28,20 +28,15 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- harpoon
 vim.keymap.set("n","<leader>a",mark.add_file)
 vim.keymap.set("n","<C-e>",ui.toggle_quick_menu)
-vim.keymap.set("n","<C-h>", function() ui.nav_file(1) end)
-vim.keymap.set("n","<C-t>", function() ui.nav_file(2) end)
-vim.keymap.set("n","<C-n>", function() ui.nav_file(4) end)
-vim.keymap.set("n","<C-s>", function() ui.nav_file(4) end)
+vim.keymap.set("n","<leader>1", function() ui.nav_file(1) end)
+vim.keymap.set("n","<leader>2", function() ui.nav_file(2) end)
+vim.keymap.set("n","<leader>3", function() ui.nav_file(4) end)
+vim.keymap.set("n","<leader>4", function() ui.nav_file(4) end)
 -- telescope
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>gf', builtin.git_files , {})
 vim.keymap.set('n', '<leader>fr', function()
 	builtin.grep_string({ search = vim.fn.input("grep ") });
-end)
-vim.keymap.set('n', '<leader>psr', function()
-  local search_term = vim.fn.input("grep ")
-  -- Aggiungi il parametro per la ricerca ricorsiva nelle sottocartelle
-  builtin.grep_string({ search = search_term, path = vim.fn.expand('%:p:h') })
 end)
 -- undotree
 vim.keymap.set("n","<leader>u",vim.cmd.UndotreeToggle)

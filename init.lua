@@ -41,3 +41,7 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 -- undotree
 vim.keymap.set("n","<leader>u",vim.cmd.UndotreeToggle)
+-- Fugitive
+vim.keymap.set("n","<leader>gs",vim.cmd.Git)
+vim.keymap.set("n", "<leader>gl", ":Git log<CR>")
+vim.keymap.set("n", "<leader>gc", ":Git commit<CR>")

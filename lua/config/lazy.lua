@@ -58,17 +58,16 @@ require("lazy").setup({
     {'nvim-telescope/telescope.nvim'},
     { "NTBBloodbath/doom-one.nvim", config = function() vim.cmd.colorscheme "doom-one" end },
     { "nvim-treesitter/nvim-treesitter" },
-    { "nvim-lualine/lualine.nvim" },
     { "theprimeagen/harpoon" },
     { "mbbill/undotree" },
     { "tpope/vim-fugitive" },
-    { "j-hui/fidget.nvim" }, -- Extensible UI for Neovim notifications and LSP progress messages.
     { "neovim/nvim-lspconfig" },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-nvim-lua' },
     { 'saadparwaiz1/cmp_luasnip' },
+    {'lewis6991/gitsigns.nvim', config = function() require('gitsigns').setup() end },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.

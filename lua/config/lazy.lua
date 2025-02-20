@@ -21,26 +21,54 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.opt.nu = true
+vim.opt.relativenumber = true 
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.isfname:append("@-@")
+
+vim.opt.updatetime = 50
+
 vim.opt.clipboard="unnamedplus"
+vim.opt.spelllang = "it_it,en_us"
+vim.o.termguicolors = true
 
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+    { import = "plugins" },
+    {'nvim-telescope/telescope.nvim'},
     { "NTBBloodbath/doom-one.nvim", config = function() vim.cmd.colorscheme "doom-one" end },
     { "nvim-treesitter/nvim-treesitter" },
     { "nvim-lualine/lualine.nvim" },
     { "theprimeagen/harpoon" },
     { "mbbill/undotree" },
     { "tpope/vim-fugitive" },
-    {"j-hui/fidget.nvim"}, -- Extensible UI for Neovim notifications and LSP progress messages.
-    {"williamboman/mason-lspconfig.nvim"},
-	{"neovim/nvim-lspconfig"},
-	{'hrsh7th/cmp-nvim-lsp'},
-	{'hrsh7th/cmp-buffer'},
-	{'hrsh7th/cmp-path'},
-	{'hrsh7th/cmp-nvim-lua'},
-	{'saadparwaiz1/cmp_luasnip'},
-    { import = "plugins" },
+    { "j-hui/fidget.nvim" }, -- Extensible UI for Neovim notifications and LSP progress messages.
+    { "neovim/nvim-lspconfig" },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-nvim-lua' },
+    { 'saadparwaiz1/cmp_luasnip' },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.

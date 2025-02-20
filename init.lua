@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>vs', ":vsplit<CR>", {})
 vim.keymap.set('n', '<leader>hs', ":split<CR>", {})
 vim.keymap.set('n', '<leader>ee', ":bprev<CR>", {})
 vim.keymap.set('n', '<leader>qq', ":bnext<CR>", {})
-vim.keymap.set('n', '<leader>sc', ":setlocal spell<CR>", {})
+vim.keymap.set('n', '<leader>sc', ":setlocal spell spelllang=it,en<CR>", {})
 vim.keymap.set('n', '<leader>lc', ":!pdflatex %:r.tex ; rm *.aux *.log *.toc<CR>",{})
 
 vim.keymap.set('n', '<leader>op', ":!zathura %:r.pdf &<CR>",{})
@@ -28,7 +28,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- harpoon
 vim.keymap.set("n","<leader>a",mark.add_file)
 vim.keymap.set("n","<C-e>",ui.toggle_quick_menu)
-
 vim.keymap.set("n","<C-h>", function() ui.nav_file(1) end)
 vim.keymap.set("n","<C-t>", function() ui.nav_file(2) end)
 vim.keymap.set("n","<C-n>", function() ui.nav_file(4) end)
@@ -36,8 +35,13 @@ vim.keymap.set("n","<C-s>", function() ui.nav_file(4) end)
 -- telescope
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>gf', builtin.git_files , {})
-vim.keymap.set('n', '<leader>ps', function()
+vim.keymap.set('n', '<leader>fr', function()
 	builtin.grep_string({ search = vim.fn.input("grep ") });
+end)
+vim.keymap.set('n', '<leader>psr', function()
+  local search_term = vim.fn.input("grep ")
+  -- Aggiungi il parametro per la ricerca ricorsiva nelle sottocartelle
+  builtin.grep_string({ search = search_term, path = vim.fn.expand('%:p:h') })
 end)
 -- undotree
 vim.keymap.set("n","<leader>u",vim.cmd.UndotreeToggle)
@@ -45,3 +49,5 @@ vim.keymap.set("n","<leader>u",vim.cmd.UndotreeToggle)
 vim.keymap.set("n","<leader>gs",vim.cmd.Git)
 vim.keymap.set("n", "<leader>gl", ":Git log<CR>")
 vim.keymap.set("n", "<leader>gc", ":Git commit<CR>")
+vim.keymap.set("n", "<leader>gP", ":Git push<CR>")
+vim.keymap.set("n", "<leader>gp", ":Git pull<CR>")

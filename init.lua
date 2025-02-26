@@ -7,16 +7,16 @@ local builtin = require('telescope.builtin')
 
 
 vim.g.mapleader = " "
+vim.keymap.set('n', '<leader>.', ":edit . <CR>", {})
 vim.keymap.set('n', '<leader>vs', ":vsplit<CR>", {})
 vim.keymap.set('n', '<leader>hs', ":split<CR>", {})
-vim.keymap.set('n', '<leader>ee', ":bprev<CR>", {})
-vim.keymap.set('n', '<leader>qq', ":bnext<CR>", {})
+vim.keymap.set('n', '<leader>ee', ":bnex<CR>", {})
+vim.keymap.set('n', '<leader>qq', ":bprev<CR>", {})
+vim.keymap.set('n', '<leader>bb', ":Telescope buffers<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>sc', ":setlocal spell spelllang=it,en<CR>", {})
 vim.keymap.set('n', '<leader>lc', ":!pdflatex %:r.tex ; rm *.aux *.log *.toc<CR>",{})
-
 vim.keymap.set('n', '<leader>op', ":!zathura %:r.pdf &<CR>",{})
 vim.keymap.set('n', '<leader>mr', ":!make run <CR>",{})
-
 vim.keymap.set('n', '<leader>mc', ":!Rscript -e 'rmarkdown::render(\"%:p\")'<CR>", {})
 -- nvim candy
 vim.keymap.set("v", "<leader>p", "\"_dP")
@@ -35,7 +35,7 @@ vim.keymap.set("n","<leader>4", function() ui.nav_file(4) end)
 -- telescope
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>gf', builtin.git_files , {})
-vim.keymap.set('n', '<leader>fr', function()
+vim.keymap.set('n', '<leader>fg', function()
 	builtin.grep_string({ search = vim.fn.input("grep ") });
 end)
 -- undotree

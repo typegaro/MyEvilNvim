@@ -24,7 +24,6 @@ vim.keymap.set("n", "<c-d>", "<c-d>zz")
 vim.keymap.set("n", "<c-u>", "<c-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
 -- harpoon
 vim.keymap.set("n","<leader>a",mark.add_file)
 vim.keymap.set("n","<C-e>",ui.toggle_quick_menu)
@@ -38,6 +37,7 @@ vim.keymap.set('n', '<leader>gf', builtin.git_files , {})
 vim.keymap.set('n', '<leader>fg', function()
 	builtin.grep_string({ search = vim.fn.input("grep ") });
 end)
+vim.keymap.set('n', '<leader>gd', builtin.git_status, {})
 -- undotree
 vim.keymap.set("n","<leader>u",vim.cmd.UndotreeToggle)
 -- Fugitive

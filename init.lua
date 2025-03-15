@@ -37,7 +37,7 @@ vim.keymap.set('n', '<leader>gf', builtin.git_files , {})
 vim.keymap.set('n', '<leader>fg', function()
 	builtin.grep_string({ search = vim.fn.input("grep ") });
 end)
-vim.keymap.set('n', '<leader>gd', builtin.git_status, {})
+vim.keymap.set('n', '<leader>gD', builtin.git_status, {})
 -- undotree
 vim.keymap.set("n","<leader>u",vim.cmd.UndotreeToggle)
 -- Fugitive

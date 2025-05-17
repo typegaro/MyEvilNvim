@@ -77,6 +77,14 @@ require("lazy").setup({
             end,
             ft = { "markdown" },
         },
+        {
+            'ThePrimeagen/git-worktree.nvim',
+            dependencies = { 'nvim-telescope/telescope.nvim' },
+            config = function()
+                require("git-worktree").setup({})
+                require("telescope").load_extension("git_worktree")
+            end
+        }
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.

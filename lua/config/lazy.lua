@@ -84,6 +84,12 @@ require("lazy").setup({
                 require("git-worktree").setup({})
                 require("telescope").load_extension("git_worktree")
             end
+        },
+        {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup()
+            end
         }
     },
     -- Configure any other settings here. See the documentation for more details.

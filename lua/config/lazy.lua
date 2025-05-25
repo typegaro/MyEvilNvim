@@ -84,26 +84,6 @@ require("lazy").setup({
                 require("git-worktree").setup({})
                 require("telescope").load_extension("git_worktree")
             end
-        },
-        -- Assicurati che questi plugin siano presenti nella tua lista:
-        {
-            "hrsh7th/nvim-cmp",
-            config = function()
-                require("cmp").setup({
-                    sources = {
-                        { name = "copilot",  group_index = 2 },
-                        { name = "nvim_lsp", group_index = 2 },
-                        { name = "path",     group_index = 2 },
-                        { name = "luasnip",  group_index = 2 },
-                    },
-                })
-            end
-        },
-        { "zbirenbaum/copilot-cmp", config = function() require("copilot_cmp").setup() end },
+        }
     },
-    -- Configure any other settings here. See the documentation for more details.
-    -- colorscheme that will be used when installing plugins.
-    --install = { colorscheme = { "habamax" } },
-    -- automatically check for plugin updates
-    --checker = { enabled = true },
 })

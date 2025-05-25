@@ -4,6 +4,15 @@ local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 local builtin = require('telescope.builtin')
 
+vim.cmd [[
+  highlight Normal guibg=NONE ctermbg=NONE
+  highlight NormalNC guibg=NONE ctermbg=NONE
+  highlight EndOfBuffer guibg=NONE ctermbg=NONE
+  highlight LineNr guibg=NONE guifg=#6c7783
+  highlight SignColumn guibg=NONE
+  highlight FoldColumn guibg=NONE
+]]
+
 
 
 vim.g.mapleader = " "
@@ -57,7 +66,7 @@ end, { desc = "Create Git Worktree" })
 -- CopilotChat
 vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "Open Copilot Chat" })
 vim.keymap.set("v", "<leader>cc", "<cmd>CopilotChat<CR>", { desc = "Open Copilot Chat" })
-vim.keymap.set("n", "<leader>cq", "<cmd>CopilotChatQuick<CR>", { desc = "Quick Chat" })
+vim.keymap.set("n", "<lead er>cq", "<cmd>CopilotChatQuick<CR>", { desc = "Quick Chat" })
 vim.keymap.set("v", "<leader>ce", ":CopilotChatExplain<CR>", { desc = "Explain selected code" })
 vim.keymap.set("v", "<leader>ct", ":CopilotChatTests<CR>", { desc = "Generate tests for selection" })
 vim.keymap.set("v", "<leader>cf", ":CopilotChatFix<CR>", { desc = "Suggest fixes for selection" })

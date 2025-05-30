@@ -56,16 +56,18 @@ require("lazy").setup({
     spec = {
         { import = "plugins" },
         { 'nvim-telescope/telescope.nvim' },
-        { "NTBBloodbath/doom-one.nvim",     config = function() vim.cmd.colorscheme "doom-one" end },
+        {
+            "NTBBloodbath/doom-one.nvim",
+            config = function()
+                vim.g.doom_one_transparent_background = true
+                vim.cmd.colorscheme("doom-one")
+            end,
+        },
         { "nvim-treesitter/nvim-treesitter" },
         { "theprimeagen/harpoon" },
         { "mbbill/undotree" },
         { "tpope/vim-fugitive" },
         { "neovim/nvim-lspconfig" },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'hrsh7th/cmp-path' },
-        { 'hrsh7th/cmp-nvim-lua' },
         { 'saadparwaiz1/cmp_luasnip' },
         { 'lewis6991/gitsigns.nvim',        config = function() require('gitsigns').setup() end },
         {

@@ -5,25 +5,16 @@ local ui = require("harpoon.ui")
 local builtin = require('telescope.builtin')
 
 vim.cmd [[
-  highlight Normal guibg=NONE ctermbg=NONE
-  highlight NormalNC guibg=NONE ctermbg=NONE
-  highlight EndOfBuffer guibg=NONE ctermbg=NONE
   highlight LineNr guibg=NONE guifg=#6c7783
-  highlight SignColumn guibg=NONE
-  highlight FoldColumn guibg=NONE
 ]]
-
-
 
 vim.g.mapleader = " "
 vim.keymap.set('n', '<leader>.', ":edit . <CR>", {})
 vim.keymap.set('n', '<leader>vs', ":vsplit<CR>", {})
 vim.keymap.set('n', '<leader>hs', ":split<CR>", {})
-vim.keymap.set('n', '<leader>ee', ":bnex<CR>", {})
-vim.keymap.set('n', '<leader>qq', ":bprev<CR>", {})
 vim.keymap.set('n', '<leader>bb', ":Telescope buffers<CR>", { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>sc', ":setlocal spell spelllang=it,en<CR>", {})
-vim.keymap.set('n', '<leader>lc', ":!pdflatex %:r.tex ; rm *.aux *.log *.toc<CR>", {})
+vim.keymap.set('n', '<leader>lc', ":!pdflatex %:r.tex <CR>", {})
 vim.keymap.set('n', '<leader>op', ":!zathura %:r.pdf &<CR>", {})
 vim.keymap.set('n', '<leader>mr', ":!make run <CR>", {})
 vim.keymap.set('n', '<leader>mc', ":!Rscript -e 'rmarkdown::render(\"%:p\")'<CR>", {})
@@ -35,14 +26,14 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- harpoon
 vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
-vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<leader>3", function() ui.nav_file(4) end)
-vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end)
+vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu)
+vim.keymap.set("n", "<leader>q", function() ui.nav_file(1) end)
+vim.keymap.set("n", "<leader>w", function() ui.nav_file(2) end)
+vim.keymap.set("n", "<leader>r", function() ui.nav_file(3) end)
+vim.keymap.set("n", "<leader>t", function() ui.nav_file(4) end)
 -- telescope
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
+-- vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fg', function()
     builtin.grep_string({ search = vim.fn.input("grep ") });
 end)
@@ -50,8 +41,8 @@ vim.keymap.set('n', '<leader>gD', builtin.git_status, {})
 -- undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- Fugitive
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-vim.keymap.set("n", "<leader>gl", ":Git log --graph --oneline --decorate --all<CR>")
+vim.keymap.set("n", "<leader>gS", vim.cmd.Git)
+vim.keymap.set("n", "<leader>gf", ":Git log --graph --oneline --decorate --all<CR>")
 vim.keymap.set("n", "<leader>gc", ":Git commit<CR>")
 vim.keymap.set("n", "<leader>gP", ":Git push<CR>")
 vim.keymap.set("n", "<leader>gp", ":Git pull<CR>")

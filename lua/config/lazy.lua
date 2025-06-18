@@ -59,7 +59,7 @@ require("lazy").setup({
         {
             "NTBBloodbath/doom-one.nvim",
             config = function()
-                vim.g.doom_one_transparent_background = true
+                vim.g.doom_one_transparent_background = false
                 vim.cmd.colorscheme("doom-one")
             end,
         },
@@ -86,6 +86,12 @@ require("lazy").setup({
                 require("git-worktree").setup({})
                 require("telescope").load_extension("git_worktree")
             end
+        },
+        {
+            'chomosuke/typst-preview.nvim',
+            lazy = false, -- or ft = 'typst'
+            version = '1.*',
+            opts = {},    -- lazy.nvim will implicitly calls `setup {}`
         }
     },
 })

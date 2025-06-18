@@ -4,12 +4,10 @@ local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 local builtin = require('telescope.builtin')
 
-vim.cmd [[
-  highlight LineNr guibg=NONE guifg=#6c7783
-]]
-
 vim.g.mapleader = " "
-vim.keymap.set('n', '<leader>.', ":edit . <CR>", {})
+vim.keymap.set('n', '<leader>.', function()
+    vim.cmd("edit " .. vim.fn.expand("%:p:h"))
+end, {})
 vim.keymap.set('n', '<leader>vs', ":vsplit<CR>", {})
 vim.keymap.set('n', '<leader>hs', ":split<CR>", {})
 vim.keymap.set('n', '<leader>bb', ":Telescope buffers<CR>", { noremap = true, silent = true })
@@ -63,3 +61,5 @@ vim.keymap.set("v", "<leader>ct", ":CopilotChatTests<CR>", { desc = "Generate te
 vim.keymap.set("v", "<leader>cf", ":CopilotChatFix<CR>", { desc = "Suggest fixes for selection" })
 vim.keymap.set("n", "<leader>cr", ":CopilotChatDocs<CR>", { desc = "Make docs" })
 vim.keymap.set("n", "<leader>cm", "<cmd>CopilotChatCommit<CR>", { desc = "Generate commit message" })
+
+vim.keymap.set("n", "<leader>t", ":TreeDivers<CR>", { desc = "Toggle tree" })

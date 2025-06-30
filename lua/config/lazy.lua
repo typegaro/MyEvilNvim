@@ -95,3 +95,5 @@ require("lazy").setup({
         }
     },
 })
+vim.api.nvim_set_hl(0, 'LineNr', { fg = '#B0B0B0' })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#FFFFFF', bold = true })

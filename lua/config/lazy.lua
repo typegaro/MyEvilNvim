@@ -66,10 +66,15 @@ require("lazy").setup({
         { "nvim-treesitter/nvim-treesitter" },
         { "theprimeagen/harpoon" },
         { "mbbill/undotree" },
-        { "tpope/vim-fugitive" },
         { "neovim/nvim-lspconfig" },
         { 'saadparwaiz1/cmp_luasnip' },
-        { 'lewis6991/gitsigns.nvim',        config = function() require('gitsigns').setup() end },
+        {
+            "lewis6991/gitsigns.nvim",
+            opts = {
+            current_line_blame = true, 
+            current_line_blame_opts = { delay = 300 },
+            },
+        },
         {
             "iamcco/markdown-preview.nvim",
             cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -80,19 +85,11 @@ require("lazy").setup({
             ft = { "markdown" },
         },
         {
-            'ThePrimeagen/git-worktree.nvim',
-            dependencies = { 'nvim-telescope/telescope.nvim' },
-            config = function()
-                require("git-worktree").setup({})
-                require("telescope").load_extension("git_worktree")
-            end
-        },
-        {
             'chomosuke/typst-preview.nvim',
             lazy = false, -- or ft = 'typst'
             version = '1.*',
             opts = {},    -- lazy.nvim will implicitly calls `setup {}`
-        }
+        },
     },
 })
 vim.api.nvim_set_hl(0, 'LineNr', { fg = '#B0B0B0' })

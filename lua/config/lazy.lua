@@ -59,7 +59,7 @@ require("lazy").setup({
         {
             "NTBBloodbath/doom-one.nvim",
             config = function()
-                vim.g.doom_one_transparent_background = false
+                vim.g.doom_one_transparent_background = true
                 vim.cmd.colorscheme("doom-one")
             end,
         },

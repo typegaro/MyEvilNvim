@@ -1,5 +1,4 @@
 require("config.lazy")
-
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 local builtin = require('telescope.builtin')
@@ -51,4 +50,4 @@ vim.keymap.set("n", "<leader>oai", function()
   vim.cmd("term codex")
 end, { desc = "Open opencode in right vertical split" })
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
-
+-- TODO: Test this

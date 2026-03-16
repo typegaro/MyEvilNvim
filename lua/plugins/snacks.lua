@@ -4,7 +4,18 @@ return {
     picker = {
       layout = { preset = "ivy" },
     },
-    explorer = {},
+    bigfile = { enabled = true },
+    dashboard = { enabled = false},
+    explorer = { enabled = false},
+    indent = { enabled = false},
+    input = { enabled = false },
+    picker = { enabled = true },
+    notifier = { enabled = false},
+    quickfile = { enabled = false },
+    scope = { enabled = false },
+    scroll = { enabled = false},
+    statuscolumn = { enabled = false},
+    words = { enabled = false },
   },
   keys = {
     -- Top Pickers & Explorer
@@ -12,7 +23,7 @@ return {
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-    { "<leader>t", function() Snacks.explorer() end, desc = "File Explorer" },
+    --{ "<leader>t", function() Snacks.explorer() end, desc = "File Explorer" },
     -- git
     { "<leader>gdd", function() Snacks.picker.git_diff() end, desc = "Find Git Files" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
@@ -27,9 +38,29 @@ return {
     { "<leader>gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
     { "<leader>gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
     { "<leader>gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-    --{ "gai", function() Snacks.picker.lsp_incoming_calls() end, desc = "C[a]lls Incoming" },
-    --{ "gao", function() Snacks.picker.lsp_outgoing_calls() end, desc = "C[a]lls Outgoing" },
     { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+    -- terminal
+    { "<leader>tt", function() Snacks.terminal() end, desc = "Terminals" },
+    { "<leader>lz", function() Snacks.lazygit() end, desc = "lazygit" },
+    {
+        "<leader>fc",
+        function()
+          Snacks.picker.grep({
+            prompt = " ",
+            search = "^\\s*class\\s",
+            regex = true,
+            live = true,
+            dirs = { vim.fn.getcwd() },
+            args = { "--no-ignore" },
+            finder = "grep",
+            --format = "file",
+            show_empty = true,
+            --supports_live = false,
+            layout = "ivy",
+          })
+        end,
+        desc = "Search for incomplete tasks",
+      },
   },
 }

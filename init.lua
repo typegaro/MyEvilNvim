@@ -1,39 +1,29 @@
-require("config.lazy")
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
-local builtin = require('telescope.builtin')
-
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+require("config.lazy")
+
 vim.keymap.set('n', '<leader>.', function()
-    vim.cmd("edit " .. vim.fn.expand("%:p:h"))
-end, {})
-vim.keymap.set('n', '<leader>vs', ":vsplit<CR>", {})
-vim.keymap.set('n', '<leader>hs', ":split<CR>", {})
-vim.keymap.set('n', '<leader>bb', ":Telescope buffers<CR>", { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>sc', ":setlocal spell spelllang=it,en<CR>", {})
-vim.keymap.set('n', '<leader>lc', ":!pdflatex %:r.tex <CR>", {})
-vim.keymap.set('n', '<leader>op', ":!zathura %:r.pdf &<CR>", {})
-vim.keymap.set('n', '<leader>mr', ":!make run <CR>", {})
-vim.keymap.set('n', '<leader>mc', ":!Rscript -e 'rmarkdown::render(\"%:p\")'<CR>", {})
--- nvim candy
+    vim.cmd.Oil(vim.fn.expand('%:p:h'))
+end, { desc = 'Open file directory in Oil' })
+vim.keymap.set('n', '<leader>e', '<cmd>Oil<CR>', { desc = 'Open Oil' })
+vim.keymap.set('n', '<leader>vs', '<cmd>vsplit<CR>', { desc = 'Vertical split' })
+vim.keymap.set('n', '<leader>hs', '<cmd>split<CR>', { desc = 'Horizontal split' })
+vim.keymap.set('n', '<leader>sc', '<cmd>setlocal spell! spelllang=it,en<CR>', { desc = 'Toggle spell check' })
+vim.keymap.set('n', '<leader>lc', '<cmd>!pdflatex %:r.tex<CR>', { desc = 'Compile LaTeX' })
+vim.keymap.set('n', '<leader>op', '<cmd>!zathura %:r.pdf &<CR>', { desc = 'Open PDF' })
+vim.keymap.set('n', '<leader>mr', '<cmd>!make run<CR>', { desc = 'Run make target' })
+vim.keymap.set('n', '<leader>mc', [[<cmd>!Rscript -e 'rmarkdown::render("%:p")'<CR>]], { desc = 'Render R markdown' })
+vim.keymap.set('n', '<leader>lu', '<cmd>Lazy update<CR>', { desc = 'Lazy update plugins' })
+vim.keymap.set('n', '<leader>lC', '<cmd>Lazy check<CR>', { desc = 'Lazy check plugin updates' })
+vim.keymap.set('n', '<leader>ls', '<cmd>Lazy sync<CR>', { desc = 'Lazy sync plugins' })
+
 vim.keymap.set("v", "<leader>p", "\"_dP")
 vim.keymap.set("n", "<c-d>", "<c-d>zz")
 vim.keymap.set("n", "<c-u>", "<c-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
--- harpoon
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu)
-vim.keymap.set("n", "<leader>q", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<leader>w", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<leader>r", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<leader>t", function() ui.nav_file(4) end)
--- telescope
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
--- vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
-vim.keymap.set('n', '<leader>gD', builtin.git_status, {})
--- undotree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<CR>', { desc = 'Toggle undo tree' })
 
 
 vim.keymap.set("n", "<leader>ai", function()
@@ -50,4 +40,3 @@ vim.keymap.set("n", "<leader>oai", function()
   vim.cmd("term codex")
 end, { desc = "Open opencode in right vertical split" })
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
--- TODO: Test this

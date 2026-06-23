@@ -15,12 +15,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -49,36 +43,53 @@ vim.opt.updatetime = 50
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.spelllang = "it_it,en_us"
-vim.o.termguicolors = true
 
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
         { import = "plugins" },
-        { 'nvim-telescope/telescope.nvim' },
         {
             "NTBBloodbath/doom-one.nvim",
+            lazy = false,
+            priority = 1000,
             config = function()
                 vim.g.doom_one_transparent_background = true
                 vim.cmd.colorscheme("doom-one")
             end,
         },
-        { "nvim-treesitter/nvim-treesitter" },
-        { "theprimeagen/harpoon" },
-        { "mbbill/undotree" },
-        { "neovim/nvim-lspconfig" },
-        { 'saadparwaiz1/cmp_luasnip' },
+        {
+            "nvim-treesitter/nvim-treesitter",
+            event = { "BufReadPost", "BufNewFile" },
+            build = ":TSUpdate",
+            config = function()
+                require('nvim-treesitter.configs').setup({
+                    highlight = {
+                        enable = true,
+                        -- nvim-treesitter markdown queries use conceal_lines which
+                        -- calls :range() on a nil node in nvim 0.12 (API changed).
+                        -- Disable for markdown and let nvim's built-in handle it.
+                        disable = { "markdown", "markdown_inline" },
+                    },
+                    indent = { enable = true },
+                })
+            end,
+        },
+        {
+            "mbbill/undotree",
+            cmd = "UndotreeToggle",
+        },
         {
             "lewis6991/gitsigns.nvim",
+            event = { "BufReadPre", "BufNewFile" },
             opts = {
-            current_line_blame = true, 
+            current_line_blame = true,
             current_line_blame_opts = { delay = 300 },
             },
         },
         {
             "iamcco/markdown-preview.nvim",
             cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-            build = "cd app && yarn install",
+            build = "cd app && npm install",
             init = function()
                 vim.g.mkdp_filetypes = { "markdown" }
             end,
@@ -86,9 +97,9 @@ require("lazy").setup({
         },
         {
             'chomosuke/typst-preview.nvim',
-            lazy = false, -- or ft = 'typst'
+            ft = 'typst',
             version = '1.*',
-            opts = {},    -- lazy.nvim will implicitly calls `setup {}`
+            opts = {},
         },
     },
 })

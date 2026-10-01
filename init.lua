@@ -1,7 +1,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-require("config.lazy")
+require("config.options")
+require("config.pack")
+require("plugins.snacks")
+require("plugins.oil")
+require("plugins.lsp")
+require("plugins.lualine")
 
 vim.keymap.set('n', '<leader>.', function()
     vim.cmd.Oil(vim.fn.expand('%:p:h'))
@@ -14,9 +19,7 @@ vim.keymap.set('n', '<leader>lc', '<cmd>!pdflatex %:r.tex<CR>', { desc = 'Compil
 vim.keymap.set('n', '<leader>op', '<cmd>!zathura %:r.pdf &<CR>', { desc = 'Open PDF' })
 vim.keymap.set('n', '<leader>mr', '<cmd>!make run<CR>', { desc = 'Run make target' })
 vim.keymap.set('n', '<leader>mc', [[<cmd>!Rscript -e 'rmarkdown::render("%:p")'<CR>]], { desc = 'Render R markdown' })
-vim.keymap.set('n', '<leader>lu', '<cmd>Lazy update<CR>', { desc = 'Lazy update plugins' })
-vim.keymap.set('n', '<leader>lC', '<cmd>Lazy check<CR>', { desc = 'Lazy check plugin updates' })
-vim.keymap.set('n', '<leader>ls', '<cmd>Lazy sync<CR>', { desc = 'Lazy sync plugins' })
+vim.keymap.set('n', '<leader>lu', function() vim.pack.update() end, { desc = 'Update plugins' })
 
 vim.keymap.set("v", "<leader>p", "\"_dP")
 vim.keymap.set("n", "<c-d>", "<c-d>zz")
